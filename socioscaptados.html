@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mis Socios</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <div style = "margin-top: 60px"; class='container'>
+        <h1>Socios</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Cuota</th>
+            <th>Teléfono</th>
+        </tr>
+        {% for socio in socios %}
+        <tr>
+            <td>{{ socio.nombre }}</td>
+            <td>{{ socio.apellidos }}</td>
+            <td>{{ socio.cuota }}</td>
+            <td>{{ socio.telefono }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</body>
+</html>

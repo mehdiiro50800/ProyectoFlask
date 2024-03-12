@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    {% include 'navbar.html' %}
+
+    <!-- Contenido de la página -->
+    <div style="margin-top: 60px;"> <!-- Para dejar espacio debajo de la barra de navegación -->
+        <h1>Bienvenid@ {{current_user.username}}!</h1>
+        <!-- Aquí va el resto del contenido de tu página -->
+    </div>
+</body>
+
+</html>
