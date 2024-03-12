@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ver Turnos</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <div style = "margin-top: 60px;"class='container'>
+        <h1>Turnos</h1>
+        <ul>
+            {% for turno in turnos %}
+            <li>{{ turno.opcion.upper() }} - {% if turno.opcion == 'permiso' %}{{ turno.sitio }}{% else %}{{ turno.codigo_postal }}{% endif %} - {{ turno.fecha_inicio.strftime('%d/%m/%Y %H:%M') }}</li>
+            {% endfor %}
+        </ul></div>
+    
+</body>
+</html>

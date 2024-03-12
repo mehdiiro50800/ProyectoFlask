@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alta de Socios</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div style = "margin-top: 60px;"class='container'>
+        <h1>Alta de Socios</h1>
+    <form action="{{url_for('altasocios')}}" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required><br>
+
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required><br>
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento (DD/MM/AAAA):</label>
+        <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" required><br>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required><br>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required><br>
+
+        <label for="horario_llamada">Horario preferido de llamada:</label>
+        <select id="horario_llamada" name="horario_llamada" required>
+            <option value="10h-13h">10h-13h</option>
+            <option value="16h-20h">16h-20h</option>
+        </select><br>
+
+        <label>Cuota:</label><br>
+        <input type="checkbox" id="cuota_15" name="cuota[]" value="15">
+        <label for="cuota_15">15€ mes</label><br>
+
+        <input type="checkbox" id="cuota_20" name="cuota[]" value="20">
+        <label for="cuota_20">20€ mes</label><br>
+
+        <input type="checkbox" id="cuota_30" name="cuota[]" value="30">
+        <label for="cuota_30">30€ mes</label><br>
+
+        <label for="iban">Número de cuenta IBAN:</label>
+        <input type="text" id="iban" name="iban" required><br>
+
+        <input type="submit" value="Guardar Socio">
+    </form>
+    </div>
+    
+</body>
+</html>
