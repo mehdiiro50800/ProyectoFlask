@@ -1,7 +1,9 @@
 [build]
   command = "pip install -r requirements.txt && uwsgi uwsgi.ini"
-  directory = "serverless/"
 
+[functions]
+  directory = "serverless/"
+  
 [build.environment]
   FLASK_ENV = "production"
   FLASK_APP = "app.py"
