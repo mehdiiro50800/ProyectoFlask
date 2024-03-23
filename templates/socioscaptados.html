@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mis Socios</title><link rel="preload" href="{{ url_for('static', filename='font-awesome/css/all.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity=xsha384-9HF2NvP+qcW7y+Q3PzCZI8dkxkX87CPvzALZ3KEU9e3+Em4sL0vo4o8r05a9kF2k" crossorigin="anonymous">
+    <link href="https://fonts.cdnfonts.com/css/noto-sans-medefaidrin" rel="stylesheet">
+
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <div style="margin-top: 60px" class="container">
+        <h1>Socios</h1>
+        <table id="tabla-socios">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>DNI/NIE</th>
+                <th>Cuota</th>
+                <th>Teléfono</th>
+            </tr>
+            {% for socio in socios %}
+            <tr>
+                <td>{{ socio.nombre.upper() }}</td>
+                <td>{{ socio.apellidos.upper() }}</td>
+                <td>{{ socio.dni.upper() }}</td>
+                <td>{{ socio.cuota }}</td>
+                <td>{{ socio.telefono }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div id="total-cuotas" class="total-cuotas"></div>
+    </div>
+    <script>
+        // Script para calcular el total de cuotas y mostrarlo
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabla = document.getElementById("tabla-socios");
+            var totalCuotas = 0;
+
+            // Recorre las filas de la tabla, excluyendo la primera (encabezados)
+            for (var i = 1; i < tabla.rows.length; i++) {
+                var cuota = parseInt(tabla.rows[i].cells[3].innerText); // Obtener valor de la cuota
+                totalCuotas += cuota; // Sumar al total
+            }
+
+            // Muestra el total de cuotas en la etiqueta de texto
+            document.getElementById("total-cuotas").innerText = "Total de cuotas: " + totalCuotas + "€";
+        });
+    </script>
+</body>
+</html>

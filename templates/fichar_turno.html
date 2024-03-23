@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichar Turno</title>
+    <link rel="preload" href="{{ url_for('static', filename='font-awesome/css/all.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity=xsha384-9HF2NvP+qcW7y+Q3PzCZI8dkxkX87CPvzALZ3KEU9e3+Em4sL0vo4o8r05a9kF2k" crossorigin="anonymous">
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <div style="margin-top: 60px;" class='container'>
+        <h1>Fichar Turno</h1>
+        <div class="fichar-turno-body">
+        <form action="{{ url_for('fichar_turno') }}" method="post">
+            <input type="radio" name="opcion" value="permiso"> Permiso
+            <input type="radio" name="opcion" value="calle"> Calle<br><br>
+            <div id="opcion_permiso" style="display: none;">
+                <input type="text" name="sitio" placeholder="Sitio" class="input-field"><br><br>
+            </div>
+            <div id="opcion_calle" style="display: none;">
+                <input type="text" name="codigo_postal" placeholder="Código Postal" class="input-field"><br><br>
+            </div>
+            <button type="submit">Fichar</button>
+        </form>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('input[name="opcion"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                document.getElementById('opcion_permiso').style.display = (this.value === 'permiso') ? 'block' : 'none';
+                document.getElementById('opcion_calle').style.display = (this.value === 'calle') ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

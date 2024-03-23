@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="preload" href="{{ url_for('static', filename='font-awesome/css/all.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity=xsha384-9HF2NvP+qcW7y+Q3PzCZI8dkxkX87CPvzALZ3KEU9e3+Em4sL0vo4o8r05a9kF2k" crossorigin="anonymous">
+
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div style="margin-top: 60px;"class='container'>      
+        <h1>Bienvenid@ {{current_user.username}}</h1>
+    </div>
+</body>
+
+</html>

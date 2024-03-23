@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alta de Socios</title>
+    <link rel="preload" href="{{ url_for('static', filename='font-awesome/css/all.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity=xsha384-9HF2NvP+qcW7y+Q3PzCZI8dkxkX87CPvzALZ3KEU9e3+Em4sL0vo4o8r05a9kF2k" crossorigin="anonymous">
+    
+</head>
+<body class="altasocios-body">
+    {% include 'navbar.html' %}
+    <div style="margin-top: 60px;" class="container-altasocios">
+        <h4>El mundo puede cambiar. Pero no cambiará solo,<br> gracias por hacerlo posible.</h4>
+
+        <h2>ALTA DE SOCIOS</h2>
+        <img src="{{ url_for('static', filename='LogoAmnistia.jpg') }}" alt="Imagen" class="imagen-logo">
+        <form action="{{url_for('altasocios')}}" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" required><br>
+
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required><br>
+
+            <label for="fecha_nacimiento">Fecha de Nacimiento (DD/MM/AAAA):</label>
+            <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" required><br>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required><br>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required><br>
+
+            <label for="horario_llamada">Horario preferido de llamada:</label>
+            <select id="horario_llamada" name="horario_llamada" required>
+                <option value="10h-13h">10h-13h</option>
+                <option value="16h-20h">16h-20h</option>
+            </select><br>
+
+            <label>Cuota:</label><br>
+            <input type="checkbox" id="cuota_15" name="cuota[]" value="15">
+            <label for="cuota_15">15€ mes</label>
+
+            <input type="checkbox" id="cuota_20" name="cuota[]" value="20">
+            <label for="cuota_20">20€ mes</label>
+
+            <input type="checkbox" id="cuota_40" name="cuota[]" value="40">
+            <label for="cuota_40">40€ mes</label><br>
+
+            <input type="checkbox" id="otra_cuota" name="otra_cuota">
+            <label for="otra_cuota">Otra cantidad</label>
+            <input type="number" id="otra_cuota_input" name="otra_cuota_input" placeholder="¿Qué otra cantidad deseas?"><br>
+
+            <label for="iban">Número de cuenta IBAN:</label>
+            <input type="text" id="iban" name="iban" required><br>
+            <div class="contenedor-boton-guardar">
+            <input type="submit" value="Guardar"></div>
+        </form>
+    </div>
+    
+
+    <script>
+        // Obtener las casillas de verificación de cuota
+        var checkboxes = document.querySelectorAll('input[name="cuota[]"]');
+        var otraCuotaCheckbox = document.getElementById('otra_cuota');
+        var otraCuotaInput = document.getElementById('otra_cuota_input');
+
+        // Agregar un evento de cambio a la casilla de verificación de "Otra cantidad"
+        otraCuotaCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Si se marca la casilla "Otra cantidad", habilitar el campo de entrada de texto
+                otraCuotaInput.disabled = false;
+                // Desmarcar todas las otras casillas de verificación de cuota
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = false;
+                });
+            } else {
+                // Si se desmarca la casilla "Otra cantidad", deshabilitar el campo de entrada de texto
+                otraCuotaInput.disabled = true;
+                // Limpiar el campo de entrada de texto
+                otraCuotaInput.value = '';
+            }
+        });
+
+        // Agregar un evento de cambio a las casillas de verificación de cuota
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    // Si se marca una opción de cuota, desmarcar la opción "Otra cantidad"
+                    otraCuotaCheckbox.checked = false;
+                    otraCuotaInput.disabled = true;
+                    // Desmarcar las otras opciones de cuota si se marca una nueva
+                    checkboxes.forEach(function(otherCheckbox) {
+                        if (otherCheckbox !== checkbox) {
+                            otherCheckbox.checked = false;
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

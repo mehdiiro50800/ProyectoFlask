@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/noto-sans-medefaidrin" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{url_for('dashboard')}}" class="{% if active_tab == 'dashboard' %}active{% endif %}">
+            <i class="fa-solid fa-house-user"></i>
+        </a>
+        <a href="{{url_for('fichar_turno')}}" class="{% if active_tab == 'fichar_turno' %}active{% endif %}">
+            <i class="fa-regular fa-pen-to-square"></i>
+                        <span>FICHAR</span>
+        </a>
+        <a href="{{url_for('ver_turnos')}}" class="{% if active_tab == 'ver_turnos' %}active{% endif %}"><i class="fa-regular fa-calendar"></i> TURNOS</a>
+        <a href="{{url_for('altasocios')}}" class="{% if active_tab == 'altasocios' %}active{% endif %}"><i class="fa-regular fa-address-card"></i> ALTAS</a>
+        <a href="{{url_for('socioscaptados')}}" class="{% if active_tab == 'socioscaptados' %}active{% endif %}"><i class="fas fa-chart-bar"></i> ESTADÍSTICAS</a>
+        <a href="{{url_for('logout')}}" class="{% if active_tab == 'logout' %}active{% endif %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> SALIR</a>
+    </div>
+</body>
+</html>
