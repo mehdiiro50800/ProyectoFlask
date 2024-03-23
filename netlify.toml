@@ -1,5 +1,5 @@
 [build]
-  command = "pip install -r requirements.txt && uwsgi uwsgi.ini"[functions]
+  command = "pip install -r requirements.txt && uwsgi uwsgi.ini"
   directory = "serverless/"
 
 [build.environment]
