@@ -1,0 +1,3 @@
+id,captador_id,nombre,apellidos,dni,fecha_nacimiento,direccion,email,telefono,horario_llamada,cuota,iban
+3,jimmy,Jaime,"Ortiz Coronado",04864281B,22/01/2007,"C/ de la dehesa 27",andreaalns2g@gmail.com,565235415,10h-13h,20,"ES4200496792162416020127 "
+4,Albert,Jaime,Alonso,04188626G,28/09/1973,"Calle Pepa",resino73@gmail.com,625630950,16h-20h,999993,ES4200496792162416020127
