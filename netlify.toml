@@ -2,9 +2,9 @@
   command = "pip install -r requirements.txt && uwsgi uwsgi.ini"
   
 [uwsgi]
-  module = app:app
-  socket = :$(PORT)
-  protocol = http
+  module = "app:app"
+  socket = ":$(PORT)"
+  protocol = "http"
 
 [functions]
   directory = "serverless/"
